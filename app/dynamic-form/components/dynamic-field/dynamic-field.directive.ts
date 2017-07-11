@@ -19,7 +19,7 @@ const components: {[type: string]: Type<Field>} = {
 })
 export class DynamicFieldDirective implements Field, OnChanges, OnInit {
   @Input()
-  config: FieldConfig;
+  config: FieldConfig<any>;
 
   @Input()
   group: FormGroup;

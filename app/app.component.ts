@@ -22,7 +22,7 @@ import { DynamicFormComponent } from './dynamic-form/containers/dynamic-form/dyn
 export class AppComponent implements AfterViewInit {
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
 
-  config: FieldConfig[] = [
+  config: FieldConfig<any>[] = [
     {
       type: 'input',
       label: 'Full name',

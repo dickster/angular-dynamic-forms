@@ -23,7 +23,7 @@ import { FieldConfig } from '../../models/field-config.interface';
 })
 export class DynamicFormComponent implements OnChanges, OnInit {
   @Input()
-  config: FieldConfig[] = [];
+  config: FieldConfig<any>[] = [];
 
   @Output()
   submit: EventEmitter<any> = new EventEmitter<any>();
@@ -66,7 +66,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
     return group;
   }
 
-  createControl(config: FieldConfig) {
+  createControl(config: FieldConfig<any>) {
     const { disabled, validation, value } = config;
     return this.fb.control({ disabled, value }, validation);
   }

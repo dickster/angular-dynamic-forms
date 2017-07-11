@@ -22,6 +22,6 @@ import { FieldConfig } from '../../models/field-config.interface';
   `
 })
 export class FormSelectComponent implements Field {
-  config: FieldConfig;
+  config: FieldConfig<string>;
   group: FormGroup;
 }

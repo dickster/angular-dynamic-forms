@@ -20,6 +20,6 @@ import { FieldConfig } from '../../models/field-config.interface';
   `
 })
 export class FormInputComponent implements Field {
-  config: FieldConfig;
+  config: FieldConfig<string>;
   group: FormGroup;
 }
