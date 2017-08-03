@@ -22,30 +22,43 @@ import { DynamicFormComponent } from './dynamic-form/containers/dynamic-form/dyn
 export class AppComponent implements AfterViewInit {
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
 
-  config: FieldConfig<any>[] = [
+  config: FieldConfig[] = [
+
+    // nest a panel with
+
     {
       type: 'input',
       label: 'Full name',
       name: 'name',
       placeholder: 'Enter your name',
-      validation: [Validators.required, Validators.minLength(4)]
+      required:true,
+      // TODO: remove explicit validator declaration and use a factory instead.  factory.createValidator("valName:arg1,arg2,arg3") ---> returns validatorFn.
+      validation: [Validators.required, Validators.minLength(4)],
+      width:6,
     },
+
     {
       type: 'select',
       label: 'Favourite Food',
       name: 'food',
       options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
       placeholder: 'Select an option',
-      validation: [Validators.required]
+      required:true,
+      width:12,
+      validation: [Validators.required],
+      rememberAs: 'foods'
     },
+
     {
       label: 'Submit',
+      width:3,
       name: 'submit',
       type: 'button'
     }
   ];
 
   ngAfterViewInit() {
+    //TODO : remove this.  should be configured on form.  any submit buttons should use [disabled]="form.valid"
     let previousValid = this.form.valid;
     this.form.changes.subscribe(() => {
       if (this.form.valid !== previousValid) {
@@ -54,6 +67,7 @@ export class AppComponent implements AfterViewInit {
       }
     });
 
+    // TODO : remove this. for demo only.
     this.form.setDisabled('submit', true);
     this.form.setValue('name', 'Todd Motto');
   }

@@ -1,7 +1,8 @@
 import { ValidatorFn } from '@angular/forms';
-// import {BizRule} from "../model/biz.rule";
+import {BizRule} from "./bizRule";
 
-export interface FieldConfig<T> {
+
+export interface FieldConfig {
   key?: string;
   disabled?: boolean,
   label?: string,
@@ -11,22 +12,22 @@ export interface FieldConfig<T> {
   options?: string[],
   placeholder?: string,
   type: string,
+// TODO : remove validation.  it will be part of BizRules.
   validation?: ValidatorFn[],
-  value?: T,
+  value?: any,
 
     // layout...
   labelWidth?:number,
-  width?:number,
-  offset?:number,
+  width?:number,    //3  ---> col-md-3.
+  offset?:number,   //  col-md-offset-2.
   // ....
 
   required?: boolean,
   order?: number,
   css?: string,
-  rememberAs?:string
+  rememberAs?:string   ///names...
 
-  // bizRules: BizRule[];
-
+  bizRules?: BizRule[];
 }
 
 

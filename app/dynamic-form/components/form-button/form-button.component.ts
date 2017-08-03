@@ -12,6 +12,7 @@ import { FieldConfig } from '../../models/field-config.interface';
       class="dynamic-field form-button"
       [formGroup]="group">
       <button
+        [class]="'col-md-'+config.width"
         [disabled]="config.disabled"
         type="submit">
         {{ config.label }}
